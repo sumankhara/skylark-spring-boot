@@ -21,13 +21,13 @@ public class Provider {
 	@Column(nullable = false)
 	private String branch;
 	
-	private int phone;
+	private String phone;
 	
 	public Provider() {
 		
 	}
 
-	public Provider(String agentName, String branch, int phone) {
+	public Provider(String agentName, String branch, String phone) {
 		super();
 		this.agentName = agentName;
 		this.branch = branch;
@@ -58,11 +58,11 @@ public class Provider {
 		this.branch = branch;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

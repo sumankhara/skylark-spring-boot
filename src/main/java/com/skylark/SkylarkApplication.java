@@ -1,5 +1,7 @@
 package com.skylark;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -34,8 +36,8 @@ public class SkylarkApplication {
 	@Bean
 	public CommandLineRunner run() {
 		return (args) -> {
-			Provider provider = ProviderRepository.save(new Provider("Santanu", "ABSLI", 945162789));
-			insuranceRepository.save(new Insurance("1234", "Jeevan Saral", 30123, PremiumMode.HLY, 1500000, 0, new Date(), new Date(), 25, provider));
+			Provider provider = ProviderRepository.save(new Provider("Santanu", "ABSLI", "945162789"));
+			insuranceRepository.save(new Insurance("1234", "Jeevan Saral", 30123, PremiumMode.HLY, 1500000, 0, "01/01/2010", "06/15/2012", 25, provider));
 			
 			for(Insurance insurance: insuranceRepository.findAll()) {
 				log.info("The insurance is: " + insurance);

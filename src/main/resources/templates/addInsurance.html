@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Skylark</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="fragments/navbar.html"> </div>
+
+    <div class="jumbotron">
+        <h3>Add Insurance</h3>
+		<form action="#" th:action="@{/addInsurance}" th:object="${insurance}" method="post">
+			<div class="form-group">
+		    	<label for="policyNumber">Policy Number</label>
+		    	<input type="text" class="form-control" th:field="*{policyNumber}" id="policyNumber" placeholder="Policy Number">
+		    	<span th:if="${#fields.hasErrors('policyNumber')}" th:errors="*{policyNumber}"></span>
+		    </div>
+		    
+		    <div class="form-group">
+			    <label for="policyName">Policy Name</label>
+			    <input type="text" class="form-control" th:field="*{policyName}" id="policyName" placeholder="Policy Name">
+			    <span th:if="${#fields.hasErrors('policyName')}" th:errors="*{policyName}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="premiumMode">Premium Mode</label>
+			    <input type="text" class="form-control" th:field="*{premiumMode}" id="premiumMode" placeholder="Premium Mode">
+			    <span th:if="${#fields.hasErrors('premiumMode')}" th:errors="*{premiumMode}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="sumAssured">Sum Assured</label>
+			    <input type="text" class="form-control" th:field="*{sumAssured}" id="sumAssured" placeholder="Sum Assured">
+			    <span th:if="${#fields.hasErrors('sumAssured')}" th:errors="*{sumAssured}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="bonusAccrued">Bonus Accrued</label>
+			    <input type="text" class="form-control" th:field="*{bonusAccrued}" id="bonusAccrued" placeholder="Bonus Accrued">
+			    <span th:if="${#fields.hasErrors('bonusAccrued')}" th:errors="*{bonusAccrued}"></span>
+			</div>
+			
+			<div class="form-group">
+ 				<label for="startDate">Start Date</label>
+ 				<input type="date" class="form-control" th:field="*{startDate}" id="startDate" max="3000-12-31" min="1000-01-01">
+ 				<span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></span>
+			</div>
+			
+			<div class="form-group">
+ 				<label for="endDate">End Date</label>
+ 				<input type="date" class="form-control" th:field="*{endDate}" id="endDate" max="3000-12-31" min="1000-01-01">
+ 				<span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="policyTerm">Policy Term</label>
+			    <input type="text" class="form-control" th:field="*{policyTerm}" id="policyTerm" placeholder="Policy Term">
+			    <span th:if="${#fields.hasErrors('policyTerm')}" th:errors="*{policyTerm}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="agentName">Agent Name</label>
+			    <input type="text" class="form-control" th:field="*{provider.agentName}" id="agentName" placeholder="Agent Name">
+			    <span th:if="${#fields.hasErrors('provider.agentName')}" th:errors="*{provider.agentName}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="branch">Branch</label>
+			    <input type="text" class="form-control" th:field="*{provider.branch}" id="branch" placeholder="Branch">
+			    <span th:if="${#fields.hasErrors('provider.branch')}" th:errors="*{provider.branch}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="phone">Phone</label>
+			    <input type="text" class="form-control" th:field="*{provider.phone}" id="phone" placeholder="Phone">
+			    <span th:if="${#fields.hasErrors('provider.phone')}" th:errors="*{provider.phone}"></span>
+			</div>
+		    
+		    <button type="submit" class="btn btn-primary">Submit</button>   
+		</form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -39,12 +39,10 @@ public class Insurance {
 	private int bonusAccrued;
 	
 	@Column(name = "policy_start_date", nullable = false, updatable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date startDate;
+	private String startDate;
 	
 	@Column(name = "policy_end_date", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date endDate;
+	private String endDate;
 	
 	@Column(name = "policy_term")
 	private int policyTerm;
@@ -58,7 +56,7 @@ public class Insurance {
 	}
 
 	public Insurance(String policyNumber, String policyName, int premium, PremiumMode premiumMode, int sumAssured,
-			int bonusAccrued, Date startDate, Date endDate, int policyTerm, Provider provider) {
+			int bonusAccrued, String startDate, String endDate, int policyTerm, Provider provider) {
 		super();
 		this.policyNumber = policyNumber;
 		this.policyName = policyName;
@@ -128,19 +126,19 @@ public class Insurance {
 		this.bonusAccrued = bonusAccrued;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
