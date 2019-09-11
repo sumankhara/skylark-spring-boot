@@ -1,4 +1,4 @@
-package com.skylark.entity;
+package com.skylark.persistence.entity;
 
 import java.util.Date;
 

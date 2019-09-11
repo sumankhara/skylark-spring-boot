@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.skylark.entity.Insurance;
-import com.skylark.entity.Provider;
-import com.skylark.repository.InsuranceRepository;
-import com.skylark.repository.ProviderRepository;
+import com.skylark.persistence.entity.Insurance;
+import com.skylark.persistence.entity.Provider;
+import com.skylark.persistence.repository.InsuranceRepository;
+import com.skylark.persistence.repository.ProviderRepository;
+import com.skylark.persistence.service.ProviderService;
 
 @Controller
 public class InsuranceController {
@@ -21,7 +23,7 @@ public class InsuranceController {
 	private InsuranceRepository insuranceRepository;
 	
 	@Autowired
-	private ProviderRepository providerRepository;
+	private ProviderService providerService;
 	
 	@GetMapping("/insurances")
 	public String retrieveInsurances(Model model) {
@@ -29,8 +31,8 @@ public class InsuranceController {
 		return "insurances";
 	}
 	
-	@GetMapping("/addInsurance")
-	public String createInsurance(Model model) {
+	@GetMapping("/showNewInsuranceForm")
+	public String showNewInsuranceForm(Model model) {
 		Provider provider = new Provider();
 		Insurance insurance = new Insurance();
 		insurance.setProvider(provider);
@@ -45,8 +47,30 @@ public class InsuranceController {
 			return "addInsurance";
 		}
 		
-		Provider provider = insurance.getProvider();
-		providerRepository.save(provider);
+		Provider provider = providerService.save(insurance.getProvider());
+		insurance.setProvider(provider);
+		insuranceRepository.save(insurance);
+		
+		model.addAttribute("insurances", insuranceRepository.findAll());
+		return "insurances";
+	}
+	
+	@GetMapping("/showEditInsuranceForm/{id}")
+	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+		Insurance insurance = insuranceRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid insurance id: " + id));
+		
+		model.addAttribute("insurance", insurance);
+		return "updateInsurance";
+	}
+	
+	@PostMapping("/updateInsurance/{id}")
+	public String updateInsurance(@PathVariable("id") String id, @Valid Insurance insurance, BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "updateInsurance";
+		}
+		
+		insurance.setId(Long.parseLong(id));
+		Provider provider = providerService.save(insurance.getProvider());
 		insurance.setProvider(provider);
 		insuranceRepository.save(insurance);
 		

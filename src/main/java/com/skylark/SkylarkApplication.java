@@ -12,11 +12,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.skylark.entity.Insurance;
-import com.skylark.entity.PremiumMode;
-import com.skylark.entity.Provider;
-import com.skylark.repository.InsuranceRepository;
-import com.skylark.repository.ProviderRepository;
+import com.skylark.persistence.entity.Insurance;
+import com.skylark.persistence.entity.PremiumMode;
+import com.skylark.persistence.entity.Provider;
+import com.skylark.persistence.repository.InsuranceRepository;
+import com.skylark.persistence.repository.ProviderRepository;
 
 @SpringBootApplication
 public class SkylarkApplication {
