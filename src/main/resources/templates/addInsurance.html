@@ -8,7 +8,7 @@
     <title>Skylark</title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div th:insert="fragments/navbar.html"> </div>
 
     <div class="jumbotron">
@@ -24,6 +24,12 @@
 			    <label for="policyName">Policy Name</label>
 			    <input type="text" class="form-control" th:field="*{policyName}" id="policyName" placeholder="Policy Name">
 			    <span th:if="${#fields.hasErrors('policyName')}" th:errors="*{policyName}"></span>
+			</div>
+			
+			<div class="form-group">
+			    <label for="premium">Premium</label>
+			    <input type="text" class="form-control" th:field="*{premium}" id="premium" placeholder="Premium">
+			    <span th:if="${#fields.hasErrors('premium')}" th:errors="*{premium}"></span>
 			</div>
 			
 			<div class="form-group">
